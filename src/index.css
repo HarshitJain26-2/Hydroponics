@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+  
+  body {
+    background-color: #0B110E;
+    color: #F0F5F1;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+}
+
+/* Custom sleek scrollbar for IoT dashboard */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #121A15;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27352D;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #36D17C;
+}
+
+/* Pulse animation */
+@keyframes greenPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.15);
+  }
+}
+
+.animate-pulse-green {
+  animation: greenPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.glass-panel {
+  background: rgba(22, 33, 26, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid #27352D;
+}
