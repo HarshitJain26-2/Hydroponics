@@ -401,3 +401,5 @@ export const INITIAL_BENCHMARK_PRESETS = {
     },
   ],
 };
+
+// Actuator hardware mappings verified for ESP32 GPIO 26 & 27
