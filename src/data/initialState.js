@@ -403,3 +403,5 @@ export const INITIAL_BENCHMARK_PRESETS = {
 };
 
 // Actuator hardware mappings verified for ESP32 GPIO 26 & 27
+
+// Agronomic crop profiles configured: Basil, Lettuce, Tomato, Strawberry
