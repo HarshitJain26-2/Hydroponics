@@ -73,3 +73,5 @@ export function getSvgAreaPath(data, width = 120, height = 40, padding = 4) {
 
   return `M ${points.join(' L ')} L ${lastX},${bottomY} L ${firstX},${bottomY} Z`;
 }
+
+// Smooth SVG path and area generator functions for responsive charts
