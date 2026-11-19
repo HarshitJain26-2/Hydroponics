@@ -195,3 +195,5 @@ export default function MetricCard({
     </div>
   );
 }
+
+// Dynamic range visual bars integrated for pH, TDS, and water tank clearance
