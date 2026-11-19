@@ -202,3 +202,5 @@ export default function Sidebar({
     </>
   );
 }
+
+// ESP32 hardware status and desktop collapse toggle integrated
