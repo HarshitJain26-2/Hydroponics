@@ -636,3 +636,5 @@ export default function OverviewPage({
 // Environmental Trends multi-series SVG chart with 1H, 6H, 24H, 7D filters
 
 // System Health circular gauge and segmented diagnostic checks
+
+// Connected actuator status cards and recent activity feed
