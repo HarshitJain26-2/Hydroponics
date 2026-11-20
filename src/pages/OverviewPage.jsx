@@ -630,3 +630,5 @@ export default function OverviewPage({
     </div>
   );
 }
+
+// 8 Primary sensor metric cards rendered in responsive grid
