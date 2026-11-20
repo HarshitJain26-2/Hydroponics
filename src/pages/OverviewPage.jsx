@@ -634,3 +634,5 @@ export default function OverviewPage({
 // 8 Primary sensor metric cards rendered in responsive grid
 
 // Environmental Trends multi-series SVG chart with 1H, 6H, 24H, 7D filters
+
+// System Health circular gauge and segmented diagnostic checks
