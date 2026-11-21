@@ -433,3 +433,5 @@ export default function PlantHealthPage({
 }
 
 // Real-time VPD calculation and environmental suitability model
+
+// Water quality range bars and deviation indicators for pH, TDS and turbidity
