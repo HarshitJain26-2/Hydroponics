@@ -432,3 +432,5 @@ export default function DeviceControlPage({
     </div>
   );
 }
+
+// Hardware safety interlocks and emergency stop procedures
