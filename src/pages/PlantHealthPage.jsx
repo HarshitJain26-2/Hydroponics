@@ -431,3 +431,5 @@ export default function PlantHealthPage({
     </div>
   );
 }
+
+// Real-time VPD calculation and environmental suitability model
