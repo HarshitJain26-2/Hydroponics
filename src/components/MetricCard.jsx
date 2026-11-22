@@ -8,9 +8,7 @@ import {
   Sparkles,
   Sun,
   ArrowUpRight,
-  ArrowDownRight,
-  TrendingUp,
-  Cpu
+  ArrowDownRight
 } from 'lucide-react';
 import { getSvgPath, getSvgAreaPath } from '../utils/helpers';
 
@@ -28,33 +26,32 @@ const ICON_MAP = {
 export default function MetricCard({
   sensor,
   onClick,
-  isDetailed = false,
 }) {
   const Icon = ICON_MAP[sensor.icon] || Activity;
   const history = sensor.history || [sensor.value * 0.95, sensor.value * 0.98, sensor.value];
   
   // Status badge styling
   let statusBadge = (
-    <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-[#36D17C]/10 text-[#36D17C] border border-[#36D17C]/20">
+    <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-[#EAF7EE] text-[#166534] border border-[#16A34A]/20">
       Normal
     </span>
   );
 
   if (sensor.status === 'Monitoring') {
     statusBadge = (
-      <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">
+      <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200">
         Monitoring
       </span>
     );
   } else if (sensor.status === 'Warning') {
     statusBadge = (
-      <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30">
+      <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-300">
         Warning
       </span>
     );
   } else if (sensor.status === 'Critical') {
     statusBadge = (
-      <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-red-500/15 text-red-400 border border-red-500/30">
+      <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-red-50 text-red-700 border border-red-200">
         Critical
       </span>
     );
@@ -69,19 +66,19 @@ export default function MetricCard({
   return (
     <div
       onClick={onClick}
-      className="group relative p-4 rounded-2xl bg-[#16211A] border border-[#27352D] hover:border-[#36D17C]/50 hover:shadow-lg hover:shadow-[#36D17C]/5 transition-all duration-200 cursor-pointer flex flex-col justify-between min-h-[175px]"
+      className="group relative p-4 rounded-2xl bg-white border border-[#E5EAE6] hover:border-[#16A34A]/40 hover:shadow-md transition-all duration-200 cursor-pointer flex flex-col justify-between min-h-[175px]"
     >
       {/* Top Header Row */}
       <div className="flex items-start justify-between">
         <div className="flex items-center gap-2.5">
-          <div className="w-9 h-9 rounded-xl bg-[#18231C] border border-[#27352D] flex items-center justify-center text-[#36D17C] group-hover:bg-[#36D17C]/10 group-hover:border-[#36D17C]/30 transition-colors">
+          <div className="w-9 h-9 rounded-xl bg-[#EAF7EE] border border-[#E5EAE6] flex items-center justify-center text-[#16A34A] group-hover:bg-[#16A34A] group-hover:text-white transition-colors">
             <Icon className="w-4 h-4" />
           </div>
           <div>
-            <h3 className="text-xs font-semibold text-[#95A69A] group-hover:text-[#F0F5F1] transition-colors truncate max-w-[120px] sm:max-w-[150px]">
+            <h3 className="text-xs font-semibold text-[#647067] group-hover:text-[#18221C] transition-colors truncate max-w-[120px] sm:max-w-[150px]">
               {sensor.name}
             </h3>
-            <span className="text-[10px] text-[#627768] font-mono">
+            <span className="text-[10px] text-[#89938B] font-mono">
               {sensor.sensorId}
             </span>
           </div>
@@ -92,7 +89,7 @@ export default function MetricCard({
       {/* Main Metric Value */}
       <div className="my-2">
         <div className="flex items-baseline gap-1.5">
-          <span className="text-2xl sm:text-3xl font-extrabold text-[#F0F5F1] tracking-tight font-mono">
+          <span className="text-2xl sm:text-3xl font-extrabold text-[#18221C] tracking-tight font-mono">
             {typeof sensor.value === 'number' && sensor.id === 'ph_level'
               ? sensor.value.toFixed(1)
               : typeof sensor.value === 'number' && sensor.id === 'air_temp'
@@ -101,19 +98,19 @@ export default function MetricCard({
               ? sensor.value.toFixed(1)
               : sensor.value}
           </span>
-          <span className="text-xs font-medium text-[#95A69A]">{sensor.unit}</span>
+          <span className="text-xs font-medium text-[#647067]">{sensor.unit}</span>
         </div>
 
         {/* Special visual indicators per card type */}
         {sensor.id === 'water_level' && (
           <div className="mt-2 space-y-1">
-            <div className="flex justify-between text-[10px] text-[#95A69A]">
+            <div className="flex justify-between text-[10px] text-[#647067]">
               <span>Reservoir: ~74% Full</span>
               <span>100cm Tank</span>
             </div>
-            <div className="w-full h-1.5 rounded-full bg-[#18231C] overflow-hidden border border-[#27352D]">
+            <div className="w-full h-1.5 rounded-full bg-[#F3F6F4] overflow-hidden border border-[#E5EAE6]">
               <div
-                className="h-full bg-gradient-to-r from-blue-500 to-[#36D17C] rounded-full transition-all duration-500"
+                className="h-full bg-gradient-to-r from-blue-500 to-[#16A34A] rounded-full transition-all duration-500"
                 style={{ width: `${sensor.percent || 74}%` }}
               />
             </div>
@@ -122,13 +119,13 @@ export default function MetricCard({
 
         {sensor.id === 'ph_level' && (
           <div className="mt-2 space-y-1">
-            <div className="flex justify-between text-[10px] text-[#95A69A]">
+            <div className="flex justify-between text-[10px] text-[#647067]">
               <span>Optimal: 5.5 - 6.5</span>
               <span>Near Neutral</span>
             </div>
-            <div className="w-full h-1.5 rounded-full bg-[#18231C] overflow-hidden border border-[#27352D] relative">
+            <div className="w-full h-1.5 rounded-full bg-[#F3F6F4] overflow-hidden border border-[#E5EAE6] relative">
               <div
-                className="h-full bg-[#36D17C] rounded-full transition-all duration-500"
+                className="h-full bg-[#16A34A] rounded-full transition-all duration-500"
                 style={{ width: `${((sensor.value - 4) / 6) * 100}%` }}
               />
             </div>
@@ -137,13 +134,13 @@ export default function MetricCard({
 
         {sensor.id === 'tds' && (
           <div className="mt-2 space-y-1">
-            <div className="flex justify-between text-[10px] text-[#95A69A]">
+            <div className="flex justify-between text-[10px] text-[#647067]">
               <span>Nutrient: Moderate</span>
               <span>Target: 700-1000</span>
             </div>
-            <div className="w-full h-1.5 rounded-full bg-[#18231C] overflow-hidden border border-[#27352D]">
+            <div className="w-full h-1.5 rounded-full bg-[#F3F6F4] overflow-hidden border border-[#E5EAE6]">
               <div
-                className="h-full bg-[#36D17C] rounded-full transition-all duration-500"
+                className="h-full bg-[#16A34A] rounded-full transition-all duration-500"
                 style={{ width: `${Math.min(100, (sensor.value / 1200) * 100)}%` }}
               />
             </div>
@@ -152,20 +149,20 @@ export default function MetricCard({
       </div>
 
       {/* Bottom Sparkline / Trend & Comparison */}
-      <div className="pt-2 border-t border-[#27352D]/60 flex items-center justify-between">
+      <div className="pt-2 border-t border-[#E5EAE6] flex items-center justify-between">
         <div className="flex items-center gap-1 text-[11px] font-mono">
           {isUp ? (
-            <span className="text-[#36D17C] flex items-center">
+            <span className="text-[#16A34A] flex items-center font-medium">
               <ArrowUpRight className="w-3.5 h-3.5" />
               +{Math.abs(diff).toFixed(1)}
             </span>
           ) : (
-            <span className="text-blue-400 flex items-center">
+            <span className="text-[#2563EB] flex items-center font-medium">
               <ArrowDownRight className="w-3.5 h-3.5" />
               -{Math.abs(diff).toFixed(1)}
             </span>
           )}
-          <span className="text-[10px] text-[#627768]">vs 1h ago</span>
+          <span className="text-[10px] text-[#89938B]">vs 1h ago</span>
         </div>
 
         {/* Mini SVG Sparkline */}
@@ -173,8 +170,8 @@ export default function MetricCard({
           <svg className="w-full h-full overflow-visible" viewBox="0 0 100 24">
             <defs>
               <linearGradient id={`grad-${sensor.id}`} x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#36D17C" stopOpacity="0.4" />
-                <stop offset="100%" stopColor="#36D17C" stopOpacity="0.0" />
+                <stop offset="0%" stopColor="#16A34A" stopOpacity="0.18" />
+                <stop offset="100%" stopColor="#16A34A" stopOpacity="0.0" />
               </linearGradient>
             </defs>
             <path
@@ -184,7 +181,7 @@ export default function MetricCard({
             <path
               d={getSvgPath(history, 100, 24, 2)}
               fill="none"
-              stroke="#36D17C"
+              stroke="#16A34A"
               strokeWidth="1.8"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -195,5 +192,3 @@ export default function MetricCard({
     </div>
   );
 }
-
-// Dynamic range visual bars integrated for pH, TDS, and water tank clearance

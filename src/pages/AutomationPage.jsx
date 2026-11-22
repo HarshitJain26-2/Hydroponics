@@ -4,12 +4,6 @@ import {
   Plus,
   Trash2,
   Edit2,
-  CheckCircle2,
-  AlertTriangle,
-  Sliders,
-  ShieldCheck,
-  Power,
-  RotateCcw,
   Clock,
   ArrowRight
 } from 'lucide-react';
@@ -96,25 +90,25 @@ export default function AutomationPage({
   return (
     <div className="space-y-6 animate-in fade-in duration-200">
       {/* 1. Header & New Rule Button */}
-      <div className="p-5 sm:p-6 rounded-2xl bg-[#121A15] border border-[#27352D] flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="p-5 sm:p-6 rounded-2xl bg-white border border-[#E5EAE6] shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex flex-wrap items-center gap-2 mb-1.5">
-            <span className="text-xs font-mono text-[#36D17C] bg-[#36D17C]/10 px-2 py-0.5 rounded-full border border-[#36D17C]/20">
+            <span className="text-xs font-mono text-[#166534] bg-[#EAF7EE] px-2.5 py-0.5 rounded-full border border-[#16A34A]/20 font-semibold">
               Logic & Triggers Engine
             </span>
             <SimulatedBadge label="ESP32 Rule Simulation" />
           </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#F0F5F1] tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#18221C] tracking-tight">
             Automation Center
           </h2>
-          <p className="text-xs sm:text-sm text-[#95A69A] mt-1 max-w-xl">
+          <p className="text-xs sm:text-sm text-[#647067] mt-1 max-w-xl">
             Configure autonomous closed-loop triggers to turn pumps on/off, regulate grow lighting, and dispatch alerts without human intervention.
           </p>
         </div>
 
         <button
           onClick={openNewRuleModal}
-          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#36D17C] text-[#0B110E] hover:bg-[#4AE695] transition-all text-xs font-bold font-mono tracking-wider shadow-lg shadow-[#36D17C]/10 self-start md:self-auto"
+          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#16A34A] text-white hover:bg-[#15803D] transition-all text-xs font-bold font-mono tracking-wider shadow-xs self-start md:self-auto"
         >
           <Plus className="w-4 h-4" />
           <span>CREATE NEW RULE</span>
@@ -125,19 +119,19 @@ export default function AutomationPage({
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {rules.map((rule) => {
           let priorityBadge = (
-            <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-blue-500/15 text-blue-400 border border-blue-500/30">
+            <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">
               {rule.priority} Priority
             </span>
           );
           if (rule.priority === 'Critical') {
             priorityBadge = (
-              <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-red-500/15 text-red-400 border border-red-500/30">
+              <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-red-50 text-red-700 border border-red-200">
                 CRITICAL
               </span>
             );
           } else if (rule.priority === 'High') {
             priorityBadge = (
-              <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30">
+              <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200">
                 HIGH
               </span>
             );
@@ -146,8 +140,8 @@ export default function AutomationPage({
           return (
             <div
               key={rule.id}
-              className={`p-5 rounded-2xl bg-[#16211A] border transition-all duration-200 flex flex-col justify-between ${
-                rule.enabled ? 'border-[#27352D] hover:border-[#36D17C]/40' : 'border-[#27352D]/50 opacity-60'
+              className={`p-5 rounded-2xl bg-white border transition-all duration-200 flex flex-col justify-between shadow-xs ${
+                rule.enabled ? 'border-[#E5EAE6] hover:border-[#16A34A]/40' : 'border-[#E5EAE6] opacity-60'
               }`}
             >
               <div>
@@ -157,17 +151,17 @@ export default function AutomationPage({
                     <div
                       className={`w-9 h-9 rounded-xl flex items-center justify-center border ${
                         rule.enabled
-                          ? 'bg-[#182B20] border-[#36D17C]/30 text-[#36D17C]'
-                          : 'bg-[#121A15] border-[#27352D] text-[#95A69A]'
+                          ? 'bg-[#EAF7EE] border-[#16A34A]/30 text-[#166534]'
+                          : 'bg-[#F3F6F4] border-[#E5EAE6] text-[#647067]'
                       }`}
                     >
                       <Sparkles className="w-4 h-4" />
                     </div>
                     <div>
-                      <h3 className="text-sm font-bold text-[#F0F5F1]">{rule.name}</h3>
+                      <h3 className="text-sm font-bold text-[#18221C]">{rule.name}</h3>
                       <div className="flex items-center gap-2 mt-0.5">
                         {priorityBadge}
-                        <span className="text-[10px] text-[#627768] font-mono">
+                        <span className="text-[10px] text-[#89938B] font-mono">
                           ID: {rule.id}
                         </span>
                       </div>
@@ -178,12 +172,12 @@ export default function AutomationPage({
                   <button
                     onClick={() => onToggleRule(rule.id)}
                     className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out ${
-                      rule.enabled ? 'bg-[#36D17C]' : 'bg-[#27352D]'
+                      rule.enabled ? 'bg-[#16A34A]' : 'bg-[#D1D8D3]'
                     }`}
                     title={rule.enabled ? 'Click to disable' : 'Click to enable'}
                   >
                     <span
-                      className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-[#121A15] shadow-lg ring-0 transition duration-200 ease-in-out ${
+                      className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out ${
                         rule.enabled ? 'translate-x-5' : 'translate-x-0'
                       }`}
                     />
@@ -191,35 +185,35 @@ export default function AutomationPage({
                 </div>
 
                 {/* Logic Formula Display Box */}
-                <div className="my-4 p-3 rounded-xl bg-[#121A15] border border-[#27352D] font-mono text-xs space-y-1.5">
+                <div className="my-4 p-3 rounded-xl bg-[#F7F9F7] border border-[#E5EAE6] font-mono text-xs space-y-1.5">
                   <div className="flex items-center gap-2">
-                    <span className="text-amber-400 font-bold">IF</span>
-                    <span className="text-[#F0F5F1] font-semibold">{rule.sensorName}</span>
-                    <span className="text-[#95A69A]">
+                    <span className="text-amber-700 font-bold">IF</span>
+                    <span className="text-[#18221C] font-semibold">{rule.sensorName}</span>
+                    <span className="text-[#647067]">
                       {rule.condition === 'greater_than' ? 'is greater than (>)' : 'falls below (<)'}
                     </span>
-                    <span className="text-[#36D17C] font-bold">
+                    <span className="text-[#166534] font-bold">
                       {rule.threshold} {rule.unit}
                     </span>
                   </div>
-                  <div className="flex items-center gap-2 pt-1 border-t border-[#27352D]/60">
-                    <span className="text-blue-400 font-bold">THEN</span>
-                    <span className="text-[#F0F5F1] font-semibold uppercase">
+                  <div className="flex items-center gap-2 pt-1 border-t border-[#E5EAE6]">
+                    <span className="text-[#2563EB] font-bold">THEN</span>
+                    <span className="text-[#18221C] font-semibold uppercase">
                       {rule.action.replace('_', ' ')}
                     </span>
-                    <ArrowRight className="w-3 h-3 text-[#95A69A]" />
-                    <span className="text-[#36D17C] font-bold">{rule.deviceName}</span>
+                    <ArrowRight className="w-3 h-3 text-[#89938B]" />
+                    <span className="text-[#166534] font-bold">{rule.deviceName}</span>
                   </div>
                 </div>
 
-                <p className="text-xs text-[#95A69A] leading-relaxed">
+                <p className="text-xs text-[#647067] leading-relaxed">
                   {rule.description}
                 </p>
               </div>
 
               {/* Bottom Actions & Trigger Statistics */}
-              <div className="mt-4 pt-3 border-t border-[#27352D]/60 flex items-center justify-between text-xs">
-                <div className="text-[11px] font-mono text-[#627768] flex items-center gap-1.5">
+              <div className="mt-4 pt-3 border-t border-[#E5EAE6] flex items-center justify-between text-xs">
+                <div className="text-[11px] font-mono text-[#89938B] flex items-center gap-1.5">
                   <Clock className="w-3 h-3" />
                   <span>Last fired: {rule.lastTriggered}</span>
                 </div>
@@ -227,14 +221,14 @@ export default function AutomationPage({
                 <div className="flex items-center gap-1">
                   <button
                     onClick={() => openEditModal(rule)}
-                    className="p-1.5 rounded-lg text-[#95A69A] hover:text-[#36D17C] hover:bg-[#18231C] transition-colors"
+                    className="p-1.5 rounded-lg text-[#647067] hover:text-[#16A34A] hover:bg-[#F3F6F4] transition-colors"
                     title="Edit Rule"
                   >
                     <Edit2 className="w-3.5 h-3.5" />
                   </button>
                   <button
                     onClick={() => onDeleteRule(rule.id)}
-                    className="p-1.5 rounded-lg text-[#95A69A] hover:text-[#EF6464] hover:bg-[#18231C] transition-colors"
+                    className="p-1.5 rounded-lg text-[#647067] hover:text-[#DC2626] hover:bg-[#F3F6F4] transition-colors"
                     title="Delete Rule"
                   >
                     <Trash2 className="w-3.5 h-3.5" />
@@ -247,11 +241,11 @@ export default function AutomationPage({
       </div>
 
       {/* 3. Automation Activity & Execution Log */}
-      <div className="p-5 rounded-2xl bg-[#16211A] border border-[#27352D] space-y-3">
-        <h3 className="text-sm font-bold text-[#F0F5F1] uppercase tracking-wider font-mono">
+      <div className="p-5 rounded-2xl bg-white border border-[#E5EAE6] shadow-xs space-y-3">
+        <h3 className="text-sm font-bold text-[#18221C] uppercase tracking-wider font-mono">
           Rule Execution History
         </h3>
-        <div className="divide-y divide-[#27352D]/60 text-xs">
+        <div className="divide-y divide-[#E5EAE6] text-xs">
           {[
             {
               rule: 'Daylight Energy Conservation',
@@ -277,15 +271,15 @@ export default function AutomationPage({
           ].map((log, idx) => (
             <div key={idx} className="py-2.5 flex items-start justify-between gap-4">
               <div>
-                <p className="font-semibold text-[#F0F5F1]">{log.rule}</p>
-                <p className="text-[11px] text-[#36D17C]">{log.action}</p>
-                <p className="text-[11px] text-[#95A69A]">{log.condition}</p>
+                <p className="font-semibold text-[#18221C]">{log.rule}</p>
+                <p className="text-[11px] text-[#166534] font-medium">{log.action}</p>
+                <p className="text-[11px] text-[#647067]">{log.condition}</p>
               </div>
               <div className="text-right shrink-0 font-mono text-[10px]">
-                <span className="px-2 py-0.5 rounded-full bg-[#36D17C]/15 text-[#36D17C]">
+                <span className="px-2 py-0.5 rounded-full bg-[#EAF7EE] text-[#166534] font-semibold">
                   {log.status}
                 </span>
-                <span className="text-[#627768] block mt-1">{log.time}</span>
+                <span className="text-[#89938B] block mt-1">{log.time}</span>
               </div>
             </div>
           ))}
@@ -302,7 +296,7 @@ export default function AutomationPage({
       >
         <form onSubmit={handleSave} className="space-y-4">
           <div>
-            <label className="text-xs font-semibold text-[#95A69A] block mb-1">
+            <label className="text-xs font-semibold text-[#647067] block mb-1">
               Rule Name
             </label>
             <input
@@ -311,19 +305,19 @@ export default function AutomationPage({
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="e.g. Low Water Tank Cutoff"
-              className="w-full px-3 py-2 rounded-xl bg-[#121A15] border border-[#27352D] text-xs text-[#F0F5F1] focus:outline-none focus:border-[#36D17C]"
+              className="w-full px-3 py-2 rounded-xl bg-[#F7F9F7] border border-[#E5EAE6] text-xs text-[#18221C] focus:outline-none focus:border-[#16A34A]"
             />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="text-xs font-semibold text-[#95A69A] block mb-1">
+              <label className="text-xs font-semibold text-[#647067] block mb-1">
                 Sensor Input
               </label>
               <select
                 value={sensor}
                 onChange={(e) => setSensor(e.target.value)}
-                className="w-full px-3 py-2 rounded-xl bg-[#121A15] border border-[#27352D] text-xs text-[#F0F5F1] focus:outline-none focus:border-[#36D17C]"
+                className="w-full px-3 py-2 rounded-xl bg-[#F7F9F7] border border-[#E5EAE6] text-xs text-[#18221C] focus:outline-none focus:border-[#16A34A]"
               >
                 {sensors.map((s) => (
                   <option key={s.id} value={s.id}>
@@ -334,13 +328,13 @@ export default function AutomationPage({
             </div>
 
             <div>
-              <label className="text-xs font-semibold text-[#95A69A] block mb-1">
+              <label className="text-xs font-semibold text-[#647067] block mb-1">
                 Condition
               </label>
               <select
                 value={condition}
                 onChange={(e) => setCondition(e.target.value)}
-                className="w-full px-3 py-2 rounded-xl bg-[#121A15] border border-[#27352D] text-xs text-[#F0F5F1] focus:outline-none focus:border-[#36D17C]"
+                className="w-full px-3 py-2 rounded-xl bg-[#F7F9F7] border border-[#E5EAE6] text-xs text-[#18221C] focus:outline-none focus:border-[#16A34A]"
               >
                 <option value="greater_than">Greater Than (&gt;)</option>
                 <option value="less_than">Less Than (&lt;)</option>
@@ -351,7 +345,7 @@ export default function AutomationPage({
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div>
-              <label className="text-xs font-semibold text-[#95A69A] block mb-1">
+              <label className="text-xs font-semibold text-[#647067] block mb-1">
                 Threshold Value
               </label>
               <input
@@ -360,18 +354,18 @@ export default function AutomationPage({
                 required
                 value={threshold}
                 onChange={(e) => setThreshold(e.target.value)}
-                className="w-full px-3 py-2 rounded-xl bg-[#121A15] border border-[#27352D] text-xs text-[#F0F5F1] focus:outline-none focus:border-[#36D17C]"
+                className="w-full px-3 py-2 rounded-xl bg-[#F7F9F7] border border-[#E5EAE6] text-xs text-[#18221C] focus:outline-none focus:border-[#16A34A]"
               />
             </div>
 
             <div>
-              <label className="text-xs font-semibold text-[#95A69A] block mb-1">
+              <label className="text-xs font-semibold text-[#647067] block mb-1">
                 Action
               </label>
               <select
                 value={action}
                 onChange={(e) => setAction(e.target.value)}
-                className="w-full px-3 py-2 rounded-xl bg-[#121A15] border border-[#27352D] text-xs text-[#F0F5F1] focus:outline-none focus:border-[#36D17C]"
+                className="w-full px-3 py-2 rounded-xl bg-[#F7F9F7] border border-[#E5EAE6] text-xs text-[#18221C] focus:outline-none focus:border-[#16A34A]"
               >
                 <option value="turn_off">Turn OFF</option>
                 <option value="turn_on">Turn ON</option>
@@ -380,14 +374,14 @@ export default function AutomationPage({
             </div>
 
             <div>
-              <label className="text-xs font-semibold text-[#95A69A] block mb-1">
+              <label className="text-xs font-semibold text-[#647067] block mb-1">
                 Target Device
               </label>
               <select
                 value={targetDevice}
                 onChange={(e) => setTargetDevice(e.target.value)}
                 disabled={action === 'alert_only'}
-                className="w-full px-3 py-2 rounded-xl bg-[#121A15] border border-[#27352D] text-xs text-[#F0F5F1] focus:outline-none focus:border-[#36D17C] disabled:opacity-50"
+                className="w-full px-3 py-2 rounded-xl bg-[#F7F9F7] border border-[#E5EAE6] text-xs text-[#18221C] focus:outline-none focus:border-[#16A34A] disabled:opacity-50"
               >
                 <option value="pump">Water Pump</option>
                 <option value="light">Grow Light</option>
@@ -398,13 +392,13 @@ export default function AutomationPage({
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="text-xs font-semibold text-[#95A69A] block mb-1">
+              <label className="text-xs font-semibold text-[#647067] block mb-1">
                 Priority Level
               </label>
               <select
                 value={priority}
                 onChange={(e) => setPriority(e.target.value)}
-                className="w-full px-3 py-2 rounded-xl bg-[#121A15] border border-[#27352D] text-xs text-[#F0F5F1] focus:outline-none focus:border-[#36D17C]"
+                className="w-full px-3 py-2 rounded-xl bg-[#F7F9F7] border border-[#E5EAE6] text-xs text-[#18221C] focus:outline-none focus:border-[#16A34A]"
               >
                 <option value="Critical">Critical (Immediate Cutoff)</option>
                 <option value="High">High</option>
@@ -419,16 +413,16 @@ export default function AutomationPage({
                 id="enableRule"
                 checked={enabled}
                 onChange={(e) => setEnabled(e.target.checked)}
-                className="w-4 h-4 accent-[#36D17C] rounded cursor-pointer"
+                className="w-4 h-4 accent-[#16A34A] rounded cursor-pointer"
               />
-              <label htmlFor="enableRule" className="text-xs font-medium text-[#F0F5F1] cursor-pointer">
+              <label htmlFor="enableRule" className="text-xs font-medium text-[#18221C] cursor-pointer">
                 Enable rule immediately upon save
               </label>
             </div>
           </div>
 
           <div>
-            <label className="text-xs font-semibold text-[#95A69A] block mb-1">
+            <label className="text-xs font-semibold text-[#647067] block mb-1">
               Rule Description / Rationale
             </label>
             <textarea
@@ -436,21 +430,21 @@ export default function AutomationPage({
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Explain why this rule exists and safety implications..."
-              className="w-full px-3 py-2 rounded-xl bg-[#121A15] border border-[#27352D] text-xs text-[#F0F5F1] focus:outline-none focus:border-[#36D17C]"
+              className="w-full px-3 py-2 rounded-xl bg-[#F7F9F7] border border-[#E5EAE6] text-xs text-[#18221C] focus:outline-none focus:border-[#16A34A]"
             />
           </div>
 
-          <div className="flex justify-end gap-3 pt-3 border-t border-[#27352D]">
+          <div className="flex justify-end gap-3 pt-3 border-t border-[#E5EAE6]">
             <button
               type="button"
               onClick={() => setIsModalOpen(false)}
-              className="px-4 py-2 rounded-xl text-xs text-[#95A69A] hover:bg-[#18231C]"
+              className="px-4 py-2 rounded-xl text-xs text-[#647067] hover:bg-[#F3F6F4]"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-4 py-2 rounded-xl bg-[#36D17C] text-[#0B110E] font-bold text-xs hover:bg-[#4AE695] transition-colors"
+              className="px-4 py-2 rounded-xl bg-[#16A34A] text-white font-bold text-xs hover:bg-[#15803D] transition-colors"
             >
               {editingRule ? 'Save Changes' : 'Create Rule'}
             </button>

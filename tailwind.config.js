@@ -7,37 +7,42 @@ export default {
   theme: {
     extend: {
       colors: {
-        bg: '#0B110E',
+        bg: '#F7F9F7',
         surface: {
-          main: '#121A15',
-          secondary: '#18231C',
-          card: '#16211A',
+          main: '#FFFFFF',
+          secondary: '#F3F6F4',
+          card: '#FFFFFF',
         },
         accent: {
-          DEFAULT: '#36D17C',
-          hover: '#4AE695',
-          dim: 'rgba(54, 209, 124, 0.12)',
+          DEFAULT: '#16A34A',
+          deep: '#166534',
+          hover: '#15803D',
+          soft: '#EAF7EE',
+          dim: 'rgba(22, 163, 74, 0.08)',
         },
         text: {
-          primary: '#F0F5F1',
-          secondary: '#95A69A',
-          muted: '#627768',
+          primary: '#18221C',
+          secondary: '#647067',
+          muted: '#89938B',
         },
         border: {
-          DEFAULT: '#27352D',
-          light: '#35483D',
+          DEFAULT: '#E5EAE6',
+          light: '#F0F3F1',
         },
         warning: {
-          DEFAULT: '#F5B942',
-          dim: 'rgba(245, 185, 66, 0.15)',
+          DEFAULT: '#F59E0B',
+          soft: '#FEF3C7',
+          text: '#B45309',
         },
         critical: {
-          DEFAULT: '#EF6464',
-          dim: 'rgba(239, 100, 100, 0.15)',
+          DEFAULT: '#DC2626',
+          soft: '#FEE2E2',
+          text: '#B91C1C',
         },
         info: {
-          DEFAULT: '#64B5F6',
-          dim: 'rgba(100, 181, 246, 0.15)',
+          DEFAULT: '#2563EB',
+          soft: '#DBEAFE',
+          text: '#1D4ED8',
         },
       },
       fontFamily: {
@@ -45,8 +50,8 @@ export default {
         mono: ['JetBrains Mono', 'Consolas', 'monospace'],
       },
       boxShadow: {
-        'card': '0 4px 20px -2px rgba(0, 0, 0, 0.5)',
-        'glow-green': '0 0 15px rgba(54, 209, 124, 0.25)',
+        'card': '0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.04)',
+        'card-hover': '0 4px 12px 0 rgba(0, 0, 0, 0.06)',
       }
     },
   },

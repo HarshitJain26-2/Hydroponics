@@ -43,25 +43,25 @@ export default function Sidebar({
       {/* Mobile Backdrop */}
       {mobileOpen && (
         <div
-          className="fixed inset-0 bg-black/60 z-40 lg:hidden backdrop-blur-sm"
+          className="fixed inset-0 bg-black/30 z-40 lg:hidden backdrop-blur-sm"
           onClick={() => setMobileOpen(false)}
         />
       )}
 
       {/* Sidebar container */}
       <aside
-        className={`fixed lg:sticky top-0 left-0 h-screen z-50 flex flex-col justify-between bg-[#121A15] border-r border-[#27352D] transition-all duration-300 ease-in-out ${
+        className={`fixed lg:sticky top-0 left-0 h-screen z-50 flex flex-col justify-between bg-white border-r border-[#E5EAE6] transition-all duration-300 ease-in-out ${
           collapsed ? 'w-20' : 'w-64'
         } ${mobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}
       >
         {/* Top Brand Header */}
         <div>
-          <div className="h-16 flex items-center justify-between px-4 border-b border-[#27352D]">
+          <div className="h-16 flex items-center justify-between px-4 border-b border-[#E5EAE6]">
             <div className="flex items-center gap-3 overflow-hidden cursor-pointer" onClick={() => setActivePage('overview')}>
               {/* Leaf + Connected Node SVG Icon */}
-              <div className="w-10 h-10 rounded-xl bg-[#16211A] border border-[#27352D] flex items-center justify-center shrink-0 shadow-inner group">
+              <div className="w-10 h-10 rounded-xl bg-[#EAF7EE] border border-[#E5EAE6] flex items-center justify-center shrink-0 group">
                 <svg
-                  className="w-6 h-6 text-[#36D17C] transition-transform duration-300 group-hover:scale-110"
+                  className="w-5 h-5 text-[#16A34A] transition-transform duration-300 group-hover:scale-110"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -69,23 +69,21 @@ export default function Sidebar({
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 >
-                  {/* Organic leaf */}
                   <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
-                  {/* Connected IoT stems/nodes */}
                   <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
-                  <circle cx="13" cy="12" r="1.5" fill="#36D17C" stroke="none" />
-                  <circle cx="19" cy="2" r="1.5" fill="#36D17C" stroke="none" />
+                  <circle cx="13" cy="12" r="1.5" fill="#16A34A" stroke="none" />
+                  <circle cx="19" cy="2" r="1.5" fill="#16A34A" stroke="none" />
                 </svg>
               </div>
 
               {!collapsed && (
                 <div className="min-w-0 transition-opacity duration-200">
                   <div className="flex items-center gap-1.5">
-                    <span className="font-bold text-base tracking-wider text-[#F0F5F1] font-mono">
-                      HYDRO<span className="text-[#36D17C]">SMART</span>
+                    <span className="font-bold text-base tracking-wider text-[#18221C] font-mono">
+                      HYDRO<span className="text-[#16A34A]">SMART</span>
                     </span>
                   </div>
-                  <p className="text-[10px] uppercase tracking-widest text-[#95A69A] font-medium truncate">
+                  <p className="text-[10px] uppercase tracking-widest text-[#647067] font-medium truncate">
                     Intelligent Hydroponics
                   </p>
                 </div>
@@ -95,7 +93,7 @@ export default function Sidebar({
             {/* Mobile close button */}
             <button
               onClick={() => setMobileOpen(false)}
-              className="lg:hidden text-[#95A69A] hover:text-[#F0F5F1] p-1.5 rounded-lg hover:bg-[#18231C]"
+              className="lg:hidden text-[#647067] hover:text-[#18221C] p-1.5 rounded-lg hover:bg-[#F3F6F4]"
             >
               <X className="w-5 h-5" />
             </button>
@@ -117,13 +115,13 @@ export default function Sidebar({
                   title={collapsed ? item.label : undefined}
                   className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 group ${
                     isActive
-                      ? 'bg-[#182B20] text-[#36D17C] border border-[#36D17C]/25 shadow-sm shadow-[#36D17C]/10'
-                      : 'text-[#95A69A] hover:bg-[#18231C] hover:text-[#F0F5F1]'
+                      ? 'bg-[#EAF7EE] text-[#166534] font-semibold border border-[#16A34A]/20 shadow-xs'
+                      : 'text-[#647067] hover:bg-[#F3F6F4] hover:text-[#18221C]'
                   } ${collapsed ? 'justify-center px-0' : ''}`}
                 >
                   <Icon
                     className={`w-5 h-5 shrink-0 transition-colors ${
-                      isActive ? 'text-[#36D17C]' : 'text-[#95A69A] group-hover:text-[#F0F5F1]'
+                      isActive ? 'text-[#16A34A]' : 'text-[#647067] group-hover:text-[#16A34A]'
                     }`}
                   />
 
@@ -132,19 +130,19 @@ export default function Sidebar({
                   )}
 
                   {!collapsed && item.badge && (
-                    <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-[#36D17C]/15 text-[#36D17C] font-mono font-semibold border border-[#36D17C]/20">
+                    <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-[#EAF7EE] text-[#166534] font-mono font-semibold border border-[#16A34A]/20">
                       {item.badge}
                     </span>
                   )}
 
                   {!collapsed && item.alertCountKey && activeAlertCount > 0 && (
-                    <span className="text-[11px] px-1.5 py-0.2 rounded-full bg-amber-500/20 text-amber-400 font-mono font-bold border border-amber-500/30">
+                    <span className="text-[11px] px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 font-mono font-bold border border-amber-200">
                       {activeAlertCount}
                     </span>
                   )}
 
                   {collapsed && item.alertCountKey && activeAlertCount > 0 && (
-                    <span className="absolute top-1 right-2 w-2 h-2 rounded-full bg-amber-400 ring-2 ring-[#121A15]" />
+                    <span className="absolute top-1 right-2 w-2 h-2 rounded-full bg-amber-500 ring-2 ring-white" />
                   )}
                 </button>
               );
@@ -153,32 +151,32 @@ export default function Sidebar({
         </div>
 
         {/* Bottom Hardware & Status Section */}
-        <div className="p-3 border-t border-[#27352D] bg-[#121A15]/60 space-y-2">
+        <div className="p-3 border-t border-[#E5EAE6] bg-[#F7F9F7] space-y-2">
           {/* ESP32 Device Card */}
           {!collapsed ? (
-            <div className="p-3 rounded-xl bg-[#16211A] border border-[#27352D] text-xs">
+            <div className="p-3 rounded-xl bg-white border border-[#E5EAE6] text-xs shadow-xs">
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-2">
-                  <Cpu className="w-4 h-4 text-[#36D17C]" />
-                  <span className="font-semibold text-[#F0F5F1] font-mono">ESP32-WROOM-32</span>
+                  <Cpu className="w-4 h-4 text-[#16A34A]" />
+                  <span className="font-semibold text-[#18221C] font-mono">ESP32-WROOM-32</span>
                 </div>
-                <span className="inline-flex items-center gap-1 text-[10px] text-[#36D17C] bg-[#36D17C]/10 px-2 py-0.5 rounded-full font-mono">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#36D17C] animate-ping" />
+                <span className="inline-flex items-center gap-1 text-[10px] text-[#166534] bg-[#EAF7EE] px-2 py-0.5 rounded-full font-mono font-medium border border-[#16A34A]/20">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#16A34A] animate-ping" />
                   {esp32Status}
                 </span>
               </div>
-              <div className="flex items-center justify-between text-[#95A69A] text-[11px]">
+              <div className="flex items-center justify-between text-[#647067] text-[11px]">
                 <span className="flex items-center gap-1 font-mono">
-                  <Wifi className="w-3 h-3 text-[#36D17C]" /> 192.168.1.142
+                  <Wifi className="w-3.5 h-3.5 text-[#16A34A]" /> 192.168.1.142
                 </span>
                 <span className="font-mono text-[10px]">QoS 1</span>
               </div>
             </div>
           ) : (
             <div className="flex justify-center py-2" title="ESP32 Node Online">
-              <div className="w-8 h-8 rounded-lg bg-[#16211A] border border-[#27352D] flex items-center justify-center relative">
-                <Cpu className="w-4 h-4 text-[#36D17C]" />
-                <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-[#36D17C] ring-2 ring-[#121A15]" />
+              <div className="w-9 h-9 rounded-xl bg-white border border-[#E5EAE6] flex items-center justify-center relative shadow-xs">
+                <Cpu className="w-4 h-4 text-[#16A34A]" />
+                <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-[#16A34A] ring-2 ring-white" />
               </div>
             </div>
           )}
@@ -186,7 +184,7 @@ export default function Sidebar({
           {/* Sidebar Collapse Toggle button (Desktop) */}
           <button
             onClick={() => setCollapsed(!collapsed)}
-            className="hidden lg:flex w-full items-center justify-center gap-2 py-2 px-3 rounded-xl text-xs font-medium text-[#95A69A] hover:text-[#F0F5F1] hover:bg-[#18231C] transition-colors"
+            className="hidden lg:flex w-full items-center justify-center gap-2 py-2 px-3 rounded-xl text-xs font-medium text-[#647067] hover:text-[#18221C] hover:bg-white border border-transparent hover:border-[#E5EAE6] transition-all"
           >
             {collapsed ? (
               <ChevronRight className="w-4 h-4" />
@@ -202,5 +200,3 @@ export default function Sidebar({
     </>
   );
 }
-
-// ESP32 hardware status and desktop collapse toggle integrated

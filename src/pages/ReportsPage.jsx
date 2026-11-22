@@ -2,14 +2,9 @@ import React, { useState } from 'react';
 import {
   FileBarChart,
   Download,
-  Calendar,
-  Filter,
   Printer,
-  CheckCircle2,
   FileText,
-  Clock,
   Sparkles,
-  ArrowRight
 } from 'lucide-react';
 import SimulatedBadge from '../components/SimulatedBadge';
 import Modal from '../components/Modal';
@@ -24,7 +19,7 @@ export default function ReportsPage({ sensors, devices, alerts }) {
   const [showPreviewModal, setShowPreviewModal] = useState(false);
 
   // Past reports list
-  const [reportsList, setReportsList] = useState([
+  const [reportsList] = useState([
     {
       id: 'REP-2026-11-01',
       title: 'Weekly Hydroponic Water Chemistry Audit',
@@ -115,18 +110,18 @@ export default function ReportsPage({ sensors, devices, alerts }) {
   return (
     <div className="space-y-6 animate-in fade-in duration-200">
       {/* 1. Header Toolbar */}
-      <div className="p-5 sm:p-6 rounded-2xl bg-[#121A15] border border-[#27352D] flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="p-5 sm:p-6 rounded-2xl bg-white border border-[#E5EAE6] shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex flex-wrap items-center gap-2 mb-1.5">
-            <span className="text-xs font-mono text-[#36D17C] bg-[#36D17C]/10 px-2 py-0.5 rounded-full border border-[#36D17C]/20 font-semibold">
+            <span className="text-xs font-mono text-[#166534] bg-[#EAF7EE] px-2.5 py-0.5 rounded-full border border-[#16A34A]/20 font-semibold">
               Data Synthesis
             </span>
             <SimulatedBadge label="Telemetry Exporter" />
           </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#F0F5F1] tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#18221C] tracking-tight">
             Reports & Analytics
           </h2>
-          <p className="text-xs sm:text-sm text-[#95A69A] mt-1 max-w-xl">
+          <p className="text-xs sm:text-sm text-[#647067] mt-1 max-w-xl">
             Compile aggregated telemetry archives, protocol benchmark trials, and actuator duty cycles into downloadable research packages.
           </p>
         </div>
@@ -135,14 +130,14 @@ export default function ReportsPage({ sensors, devices, alerts }) {
         <div className="flex items-center gap-2 self-start md:self-auto">
           <button
             onClick={handleDownloadCsv}
-            className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[#16211A] border border-[#27352D] text-xs font-mono text-[#95A69A] hover:text-[#36D17C] hover:border-[#36D17C]/40 transition-colors"
+            className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white border border-[#E5EAE6] text-xs font-mono text-[#647067] hover:text-[#16A34A] hover:border-[#16A34A]/40 transition-colors shadow-xs"
           >
             <Download className="w-3.5 h-3.5" />
             <span>CSV</span>
           </button>
           <button
             onClick={handleDownloadJson}
-            className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[#16211A] border border-[#27352D] text-xs font-mono text-[#95A69A] hover:text-[#36D17C] hover:border-[#36D17C]/40 transition-colors"
+            className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white border border-[#E5EAE6] text-xs font-mono text-[#647067] hover:text-[#16A34A] hover:border-[#16A34A]/40 transition-colors shadow-xs"
           >
             <Download className="w-3.5 h-3.5" />
             <span>JSON</span>
@@ -151,22 +146,22 @@ export default function ReportsPage({ sensors, devices, alerts }) {
       </div>
 
       {/* 2. Report Generation Configuration Form */}
-      <div className="p-5 sm:p-6 rounded-2xl bg-[#16211A] border border-[#27352D] space-y-4">
-        <h3 className="text-base font-bold text-[#F0F5F1] flex items-center gap-2">
-          <FileBarChart className="w-4 h-4 text-[#36D17C]" />
+      <div className="p-5 sm:p-6 rounded-2xl bg-white border border-[#E5EAE6] shadow-xs space-y-4">
+        <h3 className="text-base font-bold text-[#18221C] flex items-center gap-2">
+          <FileBarChart className="w-4 h-4 text-[#16A34A]" />
           <span>Report Formulation Engine</span>
         </h3>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {/* Report Type */}
           <div>
-            <label className="text-xs font-semibold text-[#95A69A] block mb-1">
+            <label className="text-xs font-semibold text-[#647067] block mb-1">
               Audit Category
             </label>
             <select
               value={reportType}
               onChange={(e) => setReportType(e.target.value)}
-              className="w-full px-3 py-2 rounded-xl bg-[#121A15] border border-[#27352D] text-xs text-[#F0F5F1] focus:outline-none focus:border-[#36D17C]"
+              className="w-full px-3 py-2 rounded-xl bg-[#F7F9F7] border border-[#E5EAE6] text-xs text-[#18221C] focus:outline-none focus:border-[#16A34A]"
             >
               <option value="environmental_trends">Environmental Canopy Trends</option>
               <option value="water_quality">Water Quality & Nutrient Solution</option>
@@ -178,13 +173,13 @@ export default function ReportsPage({ sensors, devices, alerts }) {
 
           {/* Date Range */}
           <div>
-            <label className="text-xs font-semibold text-[#95A69A] block mb-1">
+            <label className="text-xs font-semibold text-[#647067] block mb-1">
               Time Horizon
             </label>
             <select
               value={dateRange}
               onChange={(e) => setDateRange(e.target.value)}
-              className="w-full px-3 py-2 rounded-xl bg-[#121A15] border border-[#27352D] text-xs text-[#F0F5F1] focus:outline-none focus:border-[#36D17C]"
+              className="w-full px-3 py-2 rounded-xl bg-[#F7F9F7] border border-[#E5EAE6] text-xs text-[#18221C] focus:outline-none focus:border-[#16A34A]"
             >
               <option value="24h">Last 24 Hours</option>
               <option value="7d">Last 7 Days (Recommended)</option>
@@ -194,13 +189,13 @@ export default function ReportsPage({ sensors, devices, alerts }) {
 
           {/* Sensor Scope */}
           <div>
-            <label className="text-xs font-semibold text-[#95A69A] block mb-1">
+            <label className="text-xs font-semibold text-[#647067] block mb-1">
               Transducer Filter
             </label>
             <select
               value={selectedSensor}
               onChange={(e) => setSelectedSensor(e.target.value)}
-              className="w-full px-3 py-2 rounded-xl bg-[#121A15] border border-[#27352D] text-xs text-[#F0F5F1] focus:outline-none focus:border-[#36D17C]"
+              className="w-full px-3 py-2 rounded-xl bg-[#F7F9F7] border border-[#E5EAE6] text-xs text-[#18221C] focus:outline-none focus:border-[#16A34A]"
             >
               <option value="all">All Channels (Comprehensive)</option>
               {sensors.map((s) => (
@@ -216,7 +211,7 @@ export default function ReportsPage({ sensors, devices, alerts }) {
           <button
             onClick={handleGenerate}
             disabled={isGenerating}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#36D17C] text-[#0B110E] hover:bg-[#4AE695] transition-all text-xs font-bold font-mono tracking-wider shadow-lg shadow-[#36D17C]/10"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#16A34A] text-white hover:bg-[#15803D] transition-all text-xs font-bold font-mono tracking-wider shadow-xs"
           >
             <Sparkles className="w-4 h-4" />
             <span>{isGenerating ? 'SYNTHESIZING REPORT...' : 'COMPILE REPORT'}</span>
@@ -226,14 +221,14 @@ export default function ReportsPage({ sensors, devices, alerts }) {
 
       {/* 3. Generated Report Preview Card (if generated) */}
       {generatedReport && (
-        <div className="p-5 sm:p-6 rounded-2xl bg-[#16211A] border border-[#36D17C]/40 space-y-4 animate-in slide-in-from-top-4 duration-200">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#27352D]">
+        <div className="p-5 sm:p-6 rounded-2xl bg-white border border-[#16A34A]/40 shadow-sm space-y-4 animate-in slide-in-from-top-4 duration-200">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#E5EAE6]">
             <div>
-              <span className="text-[10px] uppercase font-mono font-bold text-[#36D17C] tracking-wider block">
+              <span className="text-[10px] uppercase font-mono font-bold text-[#166534] tracking-wider block">
                 COMPILATION COMPLETE
               </span>
-              <h3 className="text-lg font-bold text-[#F0F5F1]">{generatedReport.title}</h3>
-              <p className="text-xs text-[#95A69A]">
+              <h3 className="text-lg font-bold text-[#18221C]">{generatedReport.title}</h3>
+              <p className="text-xs text-[#647067]">
                 Horizon: {generatedReport.range} • Generated: {generatedReport.createdAt}
               </p>
             </div>
@@ -241,14 +236,14 @@ export default function ReportsPage({ sensors, devices, alerts }) {
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setShowPreviewModal(true)}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#18231C] border border-[#27352D] text-xs font-medium text-[#F0F5F1] hover:text-[#36D17C]"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#F7F9F7] border border-[#E5EAE6] text-xs font-medium text-[#18221C] hover:text-[#16A34A] shadow-xs"
               >
                 <Printer className="w-3.5 h-3.5" />
                 <span>Printable Preview</span>
               </button>
               <button
                 onClick={handleDownloadCsv}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#36D17C]/15 text-[#36D17C] border border-[#36D17C]/30 text-xs font-mono font-bold"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#EAF7EE] text-[#166534] border border-[#16A34A]/30 text-xs font-mono font-bold shadow-xs"
               >
                 <Download className="w-3.5 h-3.5" />
                 <span>Export Audit CSV</span>
@@ -257,61 +252,61 @@ export default function ReportsPage({ sensors, devices, alerts }) {
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-6 gap-3 text-xs font-mono">
-            <div className="p-3 rounded-xl bg-[#121A15] border border-[#27352D]">
-              <span className="text-[#627768] block text-[10px]">AIR TEMP AVG</span>
-              <span className="text-[#F0F5F1] font-bold text-sm">26.8 °C</span>
+            <div className="p-3 rounded-xl bg-[#F7F9F7] border border-[#E5EAE6]">
+              <span className="text-[#89938B] block text-[10px]">AIR TEMP AVG</span>
+              <span className="text-[#18221C] font-bold text-sm">26.8 °C</span>
             </div>
-            <div className="p-3 rounded-xl bg-[#121A15] border border-[#27352D]">
-              <span className="text-[#627768] block text-[10px]">WATER TEMP AVG</span>
-              <span className="text-[#F0F5F1] font-bold text-sm">23.1 °C</span>
+            <div className="p-3 rounded-xl bg-[#F7F9F7] border border-[#E5EAE6]">
+              <span className="text-[#89938B] block text-[10px]">WATER TEMP AVG</span>
+              <span className="text-[#18221C] font-bold text-sm">23.1 °C</span>
             </div>
-            <div className="p-3 rounded-xl bg-[#121A15] border border-[#27352D]">
-              <span className="text-[#627768] block text-[10px]">PH AVG</span>
-              <span className="text-[#36D17C] font-bold text-sm">6.18 pH</span>
+            <div className="p-3 rounded-xl bg-[#F7F9F7] border border-[#E5EAE6]">
+              <span className="text-[#89938B] block text-[10px]">PH AVG</span>
+              <span className="text-[#166534] font-bold text-sm">6.18 pH</span>
             </div>
-            <div className="p-3 rounded-xl bg-[#121A15] border border-[#27352D]">
-              <span className="text-[#627768] block text-[10px]">NUTRIENT TDS</span>
-              <span className="text-[#36D17C] font-bold text-sm">845 ppm</span>
+            <div className="p-3 rounded-xl bg-[#F7F9F7] border border-[#E5EAE6]">
+              <span className="text-[#89938B] block text-[10px]">NUTRIENT TDS</span>
+              <span className="text-[#166534] font-bold text-sm">845 ppm</span>
             </div>
-            <div className="p-3 rounded-xl bg-[#121A15] border border-[#27352D]">
-              <span className="text-[#627768] block text-[10px]">PUMP RUNTIME</span>
-              <span className="text-[#64B5F6] font-bold text-sm">28h 40m</span>
+            <div className="p-3 rounded-xl bg-[#F7F9F7] border border-[#E5EAE6]">
+              <span className="text-[#89938B] block text-[10px]">PUMP RUNTIME</span>
+              <span className="text-[#2563EB] font-bold text-sm">28h 40m</span>
             </div>
-            <div className="p-3 rounded-xl bg-[#121A15] border border-[#27352D]">
-              <span className="text-[#627768] block text-[10px]">MQTT RELIABILITY</span>
-              <span className="text-[#36D17C] font-bold text-sm">99.6%</span>
+            <div className="p-3 rounded-xl bg-[#F7F9F7] border border-[#E5EAE6]">
+              <span className="text-[#89938B] block text-[10px]">MQTT RELIABILITY</span>
+              <span className="text-[#166534] font-bold text-sm">99.6%</span>
             </div>
           </div>
         </div>
       )}
 
       {/* 4. Historical Reports Archive */}
-      <div className="p-5 sm:p-6 rounded-2xl bg-[#16211A] border border-[#27352D] space-y-4">
-        <h3 className="text-base font-bold text-[#F0F5F1]">Historical Research Dossiers</h3>
+      <div className="p-5 sm:p-6 rounded-2xl bg-white border border-[#E5EAE6] shadow-xs space-y-4">
+        <h3 className="text-base font-bold text-[#18221C]">Historical Research Dossiers</h3>
 
-        <div className="divide-y divide-[#27352D]/60 text-xs">
+        <div className="divide-y divide-[#E5EAE6] text-xs">
           {reportsList.map((rep) => (
             <div
               key={rep.id}
-              className="py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-[#18231C]/40 p-2 rounded-xl transition-colors"
+              className="py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-[#F7F9F7] p-2 rounded-xl transition-colors"
             >
               <div className="flex items-start gap-3">
-                <FileText className="w-5 h-5 text-[#36D17C] shrink-0 mt-0.5" />
+                <FileText className="w-5 h-5 text-[#16A34A] shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-semibold text-[#F0F5F1]">{rep.title}</h4>
-                  <p className="text-[11px] text-[#95A69A]">
+                  <h4 className="font-semibold text-[#18221C]">{rep.title}</h4>
+                  <p className="text-[11px] text-[#647067]">
                     {rep.type} • {rep.range} • {rep.size}
                   </p>
                 </div>
               </div>
 
               <div className="flex items-center gap-2 self-end sm:self-center">
-                <span className="px-2 py-0.5 rounded-full bg-[#18231C] text-[#95A69A] font-mono text-[10px]">
+                <span className="px-2 py-0.5 rounded-full bg-[#F7F9F7] text-[#647067] border border-[#E5EAE6] font-mono text-[10px]">
                   {rep.format}
                 </span>
                 <button
                   onClick={handleDownloadCsv}
-                  className="p-1.5 rounded-lg text-[#95A69A] hover:text-[#36D17C] hover:bg-[#121A15]"
+                  className="p-1.5 rounded-lg text-[#647067] hover:text-[#16A34A] hover:bg-white transition-colors"
                   title="Download File"
                 >
                   <Download className="w-4 h-4" />
@@ -331,21 +326,21 @@ export default function ReportsPage({ sensors, devices, alerts }) {
           subtitle={generatedReport.title}
           maxWidth="max-w-2xl"
         >
-          <div className="space-y-4 text-xs font-sans text-[#F0F5F1]">
-            <div className="p-4 rounded-xl bg-[#121A15] border border-[#27352D] flex items-center justify-between">
+          <div className="space-y-4 text-xs font-sans text-[#18221C]">
+            <div className="p-4 rounded-xl bg-[#F7F9F7] border border-[#E5EAE6] flex items-center justify-between">
               <div>
-                <p className="font-mono font-bold text-base text-[#36D17C]">HYDROSMART IOT AUDIT</p>
-                <p className="text-[#95A69A] text-[11px]">ESP32 Greenhouse Automated Monitoring System</p>
+                <p className="font-mono font-bold text-base text-[#166534]">HYDROSMART IOT AUDIT</p>
+                <p className="text-[#647067] text-[11px]">ESP32 Greenhouse Automated Monitoring System</p>
               </div>
-              <div className="text-right font-mono text-[10px] text-[#627768]">
+              <div className="text-right font-mono text-[10px] text-[#89938B]">
                 <p>Report ID: {generatedReport.id}</p>
                 <p>{generatedReport.createdAt}</p>
               </div>
             </div>
 
-            <div className="border border-[#27352D] rounded-xl overflow-hidden">
+            <div className="border border-[#E5EAE6] rounded-xl overflow-hidden">
               <table className="w-full text-left text-xs">
-                <thead className="bg-[#121A15] text-[#95A69A] font-mono border-b border-[#27352D]">
+                <thead className="bg-[#F7F9F7] text-[#647067] font-mono border-b border-[#E5EAE6]">
                   <tr>
                     <th className="p-2.5">Transducer / Metric</th>
                     <th className="p-2.5">Mean Reading</th>
@@ -353,39 +348,39 @@ export default function ReportsPage({ sensors, devices, alerts }) {
                     <th className="p-2.5">Compliance</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#27352D]/60 bg-[#16211A] font-mono">
+                <tbody className="divide-y divide-[#E5EAE6] bg-white font-mono">
                   <tr>
-                    <td className="p-2.5 text-[#F0F5F1]">Canopy Air Temperature</td>
+                    <td className="p-2.5 text-[#18221C]">Canopy Air Temperature</td>
                     <td className="p-2.5">26.8 °C</td>
-                    <td className="p-2.5 text-[#95A69A]">± 1.4 °C</td>
-                    <td className="p-2.5 text-[#36D17C]">100% In Bounds</td>
+                    <td className="p-2.5 text-[#647067]">± 1.4 °C</td>
+                    <td className="p-2.5 text-[#166534] font-semibold">100% In Bounds</td>
                   </tr>
                   <tr>
-                    <td className="p-2.5 text-[#F0F5F1]">Relative Atmospheric Humidity</td>
+                    <td className="p-2.5 text-[#18221C]">Relative Atmospheric Humidity</td>
                     <td className="p-2.5">64.5 %</td>
-                    <td className="p-2.5 text-[#95A69A]">± 4.2 %</td>
-                    <td className="p-2.5 text-[#36D17C]">Optimal Transpiration</td>
+                    <td className="p-2.5 text-[#647067]">± 4.2 %</td>
+                    <td className="p-2.5 text-[#166534] font-semibold">Optimal Transpiration</td>
                   </tr>
                   <tr>
-                    <td className="p-2.5 text-[#F0F5F1]">Reservoir Solution Acidity</td>
+                    <td className="p-2.5 text-[#18221C]">Reservoir Solution Acidity</td>
                     <td className="p-2.5">6.18 pH</td>
-                    <td className="p-2.5 text-[#95A69A]">± 0.08 pH</td>
-                    <td className="p-2.5 text-[#36D17C]">Stable Buffered</td>
+                    <td className="p-2.5 text-[#647067]">± 0.08 pH</td>
+                    <td className="p-2.5 text-[#166534] font-semibold">Stable Buffered</td>
                   </tr>
                   <tr>
-                    <td className="p-2.5 text-[#F0F5F1]">Total Dissolved Solids (TDS)</td>
+                    <td className="p-2.5 text-[#18221C]">Total Dissolved Solids (TDS)</td>
                     <td className="p-2.5">845 ppm</td>
-                    <td className="p-2.5 text-[#95A69A]">± 25 ppm</td>
-                    <td className="p-2.5 text-[#36D17C]">Target Absorption</td>
+                    <td className="p-2.5 text-[#647067]">± 25 ppm</td>
+                    <td className="p-2.5 text-[#166534] font-semibold">Target Absorption</td>
                   </tr>
                 </tbody>
               </table>
             </div>
 
-            <div className="flex justify-end gap-2 pt-2 border-t border-[#27352D]">
+            <div className="flex justify-end gap-2 pt-2 border-t border-[#E5EAE6]">
               <button
                 onClick={() => window.print()}
-                className="px-4 py-2 rounded-xl bg-[#36D17C] text-[#0B110E] font-bold text-xs"
+                className="px-4 py-2 rounded-xl bg-[#16A34A] text-white font-bold text-xs hover:bg-[#15803D]"
               >
                 Print / Save PDF
               </button>

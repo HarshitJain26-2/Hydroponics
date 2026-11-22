@@ -1,20 +1,17 @@
 # HYDROSMART — Smart Hydroponics IoT Dashboard
 
-A modern, responsive, dark-mode web dashboard for **HYDROSMART**, an IoT-powered smart hydroponics monitoring, automation, and communication protocol analysis system built with **ESP32, MQTT/HTTP/CoAP, and automated actuators**.
+A modern, responsive, light-mode web dashboard for **HYDROSMART**, an IoT-powered smart hydroponics monitoring, automation, and communication protocol analysis system built with **ESP32, MQTT/HTTP/CoAP, and automated actuators**.
 
 ---
 
-## 🌿 System Highlights
+## 🌿 Theme Direction: Clean White + Fresh Green
 
-- **Dual-Purpose Architecture**:
-  1. **Smart Hydroponics Monitoring & Closed-Loop Automation**: Continuous biological and physical telemetry monitoring (air/water temp, humidity, ultrasonic water level, pH, TDS, turbidity, light intensity) and fail-safe relay control (submersible pump, LED grow light).
-  2. **Experimental IoT Communication Protocol Benchmark**: Comparative research benchmark of **MQTT, HTTP, and CoAP** measuring latency (RTT), packet delivery reliability, throughput, and header/payload wire overhead.
-
-- **Design System**:
-  - Dark-mode-first aesthetic with precision agriculture palette (`#0B110E` background, `#121A15` main surface, `#36D17C` emerald accent, `#F0F5F1` crisp typography, `#27352D` subtle borders).
-  - Responsive desktop layout with persistent collapsible left sidebar, mobile drawer, and top status bar.
-  - Inter & JetBrains Mono typography for high legibility numerical telemetry.
-  - Lucide icons and pure, ultra-fast vector SVG time-series charts with interactive tooltips.
+- **Design Aesthetic**:
+  - Light, clean, premium white dashboard inspired by modern SaaS analytics platforms, precision agriculture, and professional IoT monitoring software.
+  - Dominant colors: Soft off-white app background (`#F7F9F7`), pure white cards (`#FFFFFF`), subtle light-gray borders (`#E5EAE6`).
+  - Restrained brand green: Primary green (`#16A34A`), deep green (`#166534`), and soft green accent pill backgrounds (`#EAF7EE`).
+  - Dark charcoal text (`#18221C`) and neutral grays (`#647067`, `#89938B`) for maximum readability.
+  - Professional vector SVG time-series charts with minimal gridlines, multi-series color balance (Green, Blue `#2563EB`, Amber `#F59E0B`).
 
 ---
 
@@ -111,7 +108,7 @@ npm run preview
 ## 🛠️ Tech Stack
 
 - **Framework**: React 19 + Vite 6
-- **Styling**: Tailwind CSS 3.4 (Custom dark IoT palette & typography)
+- **Styling**: Tailwind CSS 3.4 (Custom Clean White & Fresh Green SaaS theme)
 - **Icons**: Lucide React
 - **Visualizations**: Responsive Vector SVG line charts, area fills, and range gauges
 - **Telemetry Engine**: Integrated real-time client-side simulation engine with realistic sensor jitter and emergency safety trips

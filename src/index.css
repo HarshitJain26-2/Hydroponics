@@ -4,33 +4,33 @@
 
 @layer base {
   :root {
-    color-scheme: dark;
+    color-scheme: light;
   }
   
   body {
-    background-color: #0B110E;
-    color: #F0F5F1;
+    background-color: #F7F9F7;
+    color: #18221C;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 }
 
-/* Custom sleek scrollbar for IoT dashboard */
+/* Custom sleek scrollbar for light theme IoT dashboard */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #121A15;
+  background: #F3F6F4;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #27352D;
+  background: #D1D8D3;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #36D17C;
+  background: #16A34A;
 }
 
 /* Pulse animation */
@@ -49,8 +49,9 @@
   animation: greenPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-.glass-panel {
-  background: rgba(22, 33, 26, 0.85);
-  backdrop-filter: blur(8px);
-  border: 1px solid #27352D;
+.card-base {
+  background-color: #FFFFFF;
+  border: 1px solid #E5EAE6;
+  border-radius: 1rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.03), 0 1px 2px -1px rgba(0, 0, 0, 0.03);
 }

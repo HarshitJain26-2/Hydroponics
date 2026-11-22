@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import Modal from './components/Modal';
@@ -17,7 +17,6 @@ import {
   INITIAL_DEVICES,
   INITIAL_RULES,
   INITIAL_ALERTS,
-  PLANT_PROFILES
 } from './data/initialState';
 import { AlertTriangle, Power } from 'lucide-react';
 
@@ -164,7 +163,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0B110E] text-[#F0F5F1] flex flex-col lg:flex-row antialiased">
+    <div className="min-h-screen bg-[#F7F9F7] text-[#18221C] flex flex-col lg:flex-row antialiased">
       {/* Persistent Left Sidebar */}
       <Sidebar
         activePage={activePage}
@@ -281,32 +280,32 @@ export default function App() {
           maxWidth="max-w-md"
         >
           <div className="space-y-4 text-xs">
-            <div className="p-3.5 rounded-xl bg-red-950/40 border border-red-600/40 text-red-200 flex items-start gap-3">
-              <AlertTriangle className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
+            <div className="p-3.5 rounded-xl bg-red-50 border border-red-200 text-red-900 flex items-start gap-3">
+              <AlertTriangle className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
               <div className="space-y-1">
-                <p className="font-bold text-sm">CRITICAL WARNING</p>
-                <p className="text-[11px] leading-relaxed">
+                <p className="font-bold text-sm text-red-800">CRITICAL WARNING</p>
+                <p className="text-[11px] text-red-700 leading-relaxed">
                   Executing an emergency stop will instantly disengage GPIO 26 (Submersible Water Pump) and GPIO 27 (Full Spectrum Grow Light). All automated dosing and circulation will cease until manual override reset.
                 </p>
               </div>
             </div>
 
-            <p className="text-[#95A69A]">
+            <p className="text-[#647067]">
               Are you sure you wish to cut all relay contacts immediately?
             </p>
 
-            <div className="flex justify-end gap-3 pt-3 border-t border-[#27352D]">
+            <div className="flex justify-end gap-3 pt-3 border-t border-[#E5EAE6]">
               <button
                 type="button"
                 onClick={() => setShowEmergencyModal(false)}
-                className="px-4 py-2 rounded-xl text-xs text-[#95A69A] hover:bg-[#18231C]"
+                className="px-4 py-2 rounded-xl text-xs text-[#647067] hover:bg-[#F3F6F4] font-medium"
               >
                 Cancel
               </button>
               <button
                 type="button"
                 onClick={handleEmergencyShutdownConfirm}
-                className="px-4 py-2 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold font-mono text-xs flex items-center gap-1.5 shadow-lg shadow-red-950/40"
+                className="px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold font-mono text-xs flex items-center gap-1.5 shadow-sm"
               >
                 <Power className="w-3.5 h-3.5" />
                 <span>CONFIRM EMERGENCY CUTOFF</span>
