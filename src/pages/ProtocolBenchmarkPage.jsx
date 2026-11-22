@@ -731,3 +731,5 @@ export default function ProtocolBenchmarkPage() {
 }
 
 // Live benchmark execution engine with mathematical jitter simulation
+
+// Comparative charts for latency, delivery rate, throughput, and overhead
